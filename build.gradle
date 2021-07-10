@@ -23,12 +23,14 @@ dependencies {
     implementation 'org.apache.commons:commons-lang3:3.12.0'
     implementation 'org.slf4j:slf4j-api:1.7.31'
 
+    // Lombok
     compileOnly 'org.projectlombok:lombok:1.18.20'
     annotationProcessor 'org.projectlombok:lombok:1.18.20'
 
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.2'
     testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.7.2'
-    testImplementation group: 'org.hamcrest', name: 'hamcrest-core', version: '2.2'
+    testImplementation 'org.hamcrest:hamcrest-core:2.2'
+    testImplementation 'com.approvaltests:approvaltests:11.7.0'
 }
 
 test {

@@ -1,4 +1,4 @@
-package lsd.format;
+package lsd.format.json;
 
 import org.junit.jupiter.api.Test;
 
