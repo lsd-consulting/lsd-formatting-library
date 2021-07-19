@@ -5,3 +5,6 @@
 ![Maven Central](https://img.shields.io/maven-central/v/io.github.lsd-consulting/lsd-formatting-library)
 ![Codecov](https://img.shields.io/codecov/c/github/lsd-consulting/lsd-formatting-library)
 
+This is a micro library that provides pretty printing functionality.
+
+Currently, it supports JSON and XML.
