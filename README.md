@@ -1,3 +1,7 @@
 # lsd-formatting-library
 
-[![Maven Central](https://img.shields.io/maven-central/v/io.github.lsd-consulting/lsd-formatting-library.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22io.github.lsd-consulting%22%20AND%20a:%22lsd-formatting-library%22)
+![GitHub](https://img.shields.io/github/license/lsd-consulting/lsd-formatting-library)
+[![Build](https://github.com/lsd-consulting/lsd-formatting-library/actions/workflows/macos-build.yml/badge.svg)](https://github.com/lsd-consulting/lsd-formatting-library/actions/workflows/macos-build.yml)
+![Maven Central](https://img.shields.io/maven-central/v/io.github.lsd-consulting/lsd-formatting-library)
+![Codecov](https://img.shields.io/codecov/c/github/lsd-consulting/lsd-formatting-library)
+
