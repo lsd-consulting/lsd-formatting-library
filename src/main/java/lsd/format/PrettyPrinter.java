@@ -6,7 +6,7 @@ import lombok.SneakyThrows;
 import static lsd.format.json.JsonPrettyPrinter.indentJson;
 import static lsd.format.xml.XmlPrettyPrinter.indentXml;
 
-public class Formatter {
+public class PrettyPrinter {
     private static final ObjectMapper objectMapper = new ObjectMapper();
 
     public static String prettyPrint(final String document) {

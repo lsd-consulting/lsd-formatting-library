@@ -10,12 +10,12 @@ import java.nio.file.Paths;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 import static java.nio.file.Files.readString;
-import static lsd.format.Formatter.prettyPrint;
-import static lsd.format.Formatter.prettyPrintJson;
+import static lsd.format.PrettyPrinter.prettyPrint;
+import static lsd.format.PrettyPrinter.prettyPrintJson;
 import static org.approvaltests.Approvals.verify;
 import static org.approvaltests.Approvals.verifyXml;
 
-class FormatterShould {
+class PrettyPrinterShould {
 
     private final Options options = new Options().forFile().withExtension(".json");
 
