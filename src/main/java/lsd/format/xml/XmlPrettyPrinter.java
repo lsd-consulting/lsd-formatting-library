@@ -1,5 +1,6 @@
 package lsd.format.xml;
 
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.dom4j.DocumentException;
 import org.dom4j.io.OutputFormat;
@@ -10,9 +11,11 @@ import java.io.StringWriter;
 import java.util.Optional;
 
 import static java.util.Optional.empty;
+import static lombok.AccessLevel.PRIVATE;
 import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.dom4j.DocumentHelper.parseText;
 
+@NoArgsConstructor(access = PRIVATE)
 @Slf4j
 public class XmlPrettyPrinter {
     private static final OutputFormat format = OutputFormat.createPrettyPrint();

@@ -4,13 +4,16 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
+import lombok.NoArgsConstructor;
 
 import java.util.Optional;
 
 import static com.google.gson.JsonParser.parseString;
 import static java.util.Optional.empty;
+import static lombok.AccessLevel.PRIVATE;
 import static org.apache.commons.lang3.StringUtils.isBlank;
 
+@NoArgsConstructor(access = PRIVATE)
 public class JsonPrettyPrinter {
 
     private final static Gson GSON = new GsonBuilder().setPrettyPrinting().create();
