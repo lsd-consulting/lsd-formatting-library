@@ -20,6 +20,7 @@ public class ObjectMapperCreator {
     public static ObjectMapper create() {
 
         ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.setDefaultPrettyPrinter(PRETTY_PRINTER);
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
         objectMapper.registerModule(new JavaTimeModule());
         objectMapper.configure(WRITE_DATES_AS_TIMESTAMPS, false);

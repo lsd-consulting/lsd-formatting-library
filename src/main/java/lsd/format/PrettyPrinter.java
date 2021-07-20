@@ -19,6 +19,6 @@ public class PrettyPrinter {
 
     @SneakyThrows
     public static String prettyPrintJson(final Object object) {
-        return indentJson(objectMapper.writeValueAsString(object)).orElseThrow();
+        return objectMapper.writeValueAsString(object);
     }
 }
