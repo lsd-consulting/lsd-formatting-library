@@ -39,6 +39,15 @@ class PrettyPrinterShould {
         verify(prettyPrintJson(new ExampleObject(2)), options);
     }
 
+    @Test
+    void convertsByteArrayFieldToString() {
+        var jsonBytes = "{\"name\":\"Bond\"}".getBytes();
+        var nonJsonBytes = "some regular text".getBytes();
+        var nonStringBytes = new byte[]{1, 2, 3};
+
+        verify(prettyPrintJson(new ExampleObjectWithBytes(jsonBytes, nonJsonBytes, nonStringBytes)), options);
+    }
+
     private String readDocument(String fileName) throws IOException, URISyntaxException {
         return readString(Paths.get(getClass().getResource(fileName).toURI()), UTF_8);
     }
@@ -46,5 +55,12 @@ class PrettyPrinterShould {
     @Value
     static class ExampleObject {
         int value;
+    }
+
+    @Value
+    static class ExampleObjectWithBytes {
+        byte[] bytesValue1;
+        byte[] bytesValue2;
+        byte[] bytesValue3;
     }
 }

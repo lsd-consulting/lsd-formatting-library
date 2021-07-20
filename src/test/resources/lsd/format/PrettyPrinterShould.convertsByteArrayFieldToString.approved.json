@@ -1,0 +1,9 @@
+{
+  "ExampleObjectWithBytes": {
+    "bytesValue1": {
+      "name": "Bond"
+    },
+    "bytesValue2": "some regular text",
+    "bytesValue3": "\u0001\u0002\u0003"
+  }
+}

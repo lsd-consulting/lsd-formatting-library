@@ -1,3 +1,5 @@
 {
-  "value": 2
+  "ExampleObject": {
+    "value": 2
+  }
 }
