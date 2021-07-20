@@ -12,12 +12,16 @@ public class ObjectMapperCreator {
     public static ObjectMapper create() {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.registerModule(new JavaTimeModule());
-        var module = new SimpleModule();
-        module.addSerializer(byte[].class, new ByteArraySerializer());
-        objectMapper.registerModule(module);
+        objectMapper.registerModule(customModule());
         objectMapper.configure(WRITE_DATES_AS_TIMESTAMPS, false);
         objectMapper.configure(FAIL_ON_UNKNOWN_PROPERTIES, false);
         objectMapper.configure(WRAP_ROOT_VALUE, true);
         return objectMapper;
+    }
+
+    private static SimpleModule customModule() {
+        var module = new SimpleModule();
+        module.addSerializer(byte[].class, new ByteArraySerializer());
+        return module;
     }
 }
