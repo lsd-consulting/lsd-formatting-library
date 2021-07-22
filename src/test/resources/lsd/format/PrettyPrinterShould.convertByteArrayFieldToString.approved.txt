@@ -1,0 +1,28 @@
+an object with bytes[] field.[0] = {
+  "value": ""
+}
+an object with bytes[] field.[1] = {
+  "value": ""
+}
+an object with bytes[] field.[2] = {
+  "value": "some regular text"
+}
+an object with bytes[] field.[3] = {
+  "value": "{looks like json}"
+}
+an object with bytes[] field.[4] = {
+  "value": {
+  "name": "Bond",
+  "age": 164,
+  "hungry": true
+}
+}
+an object with bytes[] field.[5] = {
+  "value": null
+}
+an object with bytes[] field.[6] = {
+  "value": ""
+}
+an object with bytes[] field.[7] = {
+  "value": "\u0001\u0002\u0003"
+}

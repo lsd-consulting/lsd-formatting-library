@@ -19,6 +19,13 @@ public class JsonPrettyPrinterShould {
     }
 
     @Test
+    public void inlineArrayElements() {
+        final Optional<String> result = JsonPrettyPrinter.indentJson("{\"array\":[\"a1\",\"a2\",\"a3\"]}");
+        assertTrue(result.isPresent());
+        assertThat(result.get(), is("{\n  \"array\": [ \"a1\", \"a2\", \"a3\" ]\n}"));
+    }
+
+    @Test
     public void handleEmptyString() {
         final Optional<String> result = JsonPrettyPrinter.indentJson(null);
         assertThat(result, is(empty()));

@@ -46,7 +46,7 @@ class PrettyPrinterShould {
                 .map(PrettyPrinter::prettyPrintJson)
                 .toArray();
 
-        verifyAll("an object with bytes[] field.", objects, options);
+        verifyAll("an object with bytes[] field.", objects);
     }
 
     private Stream<byte[]> byteArrayExamples() {
@@ -55,6 +55,7 @@ class PrettyPrinterShould {
                 " ".getBytes(),
                 "some regular text".getBytes(),
                 "{looks like json}".getBytes(),
+                "{\"name\":\"Bond\", \"age\":164, \"hungry\":true}".getBytes(),
                 null,
                 new byte[0],
                 new byte[]{1, 2, 3}
