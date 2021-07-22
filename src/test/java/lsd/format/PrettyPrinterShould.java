@@ -56,6 +56,8 @@ class PrettyPrinterShould {
                 "some regular text".getBytes(),
                 "{looks like json}".getBytes(),
                 "{\"name\":\"Bond\", \"age\":164, \"hungry\":true}".getBytes(),
+                "<xml><x>hello</x><y>goodbye</y></xml>".getBytes(),
+                "<looks like xml>".getBytes(),
                 null,
                 new byte[0],
                 new byte[]{1, 2, 3}

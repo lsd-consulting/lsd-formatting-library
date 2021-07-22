@@ -1,28 +1,34 @@
-an object with bytes[] field.[0] = {
+an object with bytes[] field.[00] = {
   "value": ""
 }
-an object with bytes[] field.[1] = {
+an object with bytes[] field.[01] = {
   "value": ""
 }
-an object with bytes[] field.[2] = {
+an object with bytes[] field.[02] = {
   "value": "some regular text"
 }
-an object with bytes[] field.[3] = {
+an object with bytes[] field.[03] = {
   "value": "{looks like json}"
 }
-an object with bytes[] field.[4] = {
+an object with bytes[] field.[04] = {
   "value": {
   "name": "Bond",
   "age": 164,
   "hungry": true
 }
 }
-an object with bytes[] field.[5] = {
+an object with bytes[] field.[05] = {
+  "value": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\n<xml>\n  <x>hello</x>\n  <y>goodbye</y>\n</xml>\n"
+}
+an object with bytes[] field.[06] = {
+  "value": "<looks like xml>"
+}
+an object with bytes[] field.[07] = {
   "value": null
 }
-an object with bytes[] field.[6] = {
+an object with bytes[] field.[08] = {
   "value": ""
 }
-an object with bytes[] field.[7] = {
+an object with bytes[] field.[09] = {
   "value": "\u0001\u0002\u0003"
 }

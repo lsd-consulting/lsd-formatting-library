@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 import java.io.IOException;
 
 import static lsd.format.json.JsonPrettyPrinter.indentJson;
+import static lsd.format.xml.XmlPrettyPrinter.indentXml;
 
 /**
  * Replaces the default byte[] serializer so that we can pretty print json strings that may be contained inside the
@@ -28,6 +29,13 @@ public class ByteArraySerializer extends StdSerializer<byte[]> {
             var indentJson = indentJson(content);
             if (indentJson.isPresent()) {
                 generator.writeRawValue(indentJson.get());
+                return;
+            }
+        }
+        if (content.startsWith("<")) {
+            var indentXml = indentXml(content);
+            if (indentXml.isPresent()) {
+                generator.writeString(indentXml.get());
                 return;
             }
         }
