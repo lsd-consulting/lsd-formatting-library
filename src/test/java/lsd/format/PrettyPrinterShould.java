@@ -7,13 +7,13 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Paths;
+import java.util.stream.Stream;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 import static java.nio.file.Files.readString;
 import static lsd.format.PrettyPrinter.prettyPrint;
 import static lsd.format.PrettyPrinter.prettyPrintJson;
-import static org.approvaltests.Approvals.verify;
-import static org.approvaltests.Approvals.verifyXml;
+import static org.approvaltests.Approvals.*;
 
 class PrettyPrinterShould {
 
@@ -39,6 +39,31 @@ class PrettyPrinterShould {
         verify(prettyPrintJson(new ExampleObject(2)), options);
     }
 
+    @Test
+    void convertByteArrayFieldToString() {
+        var objects = byteArrayExamples()
+                .map(ExampleObjectWithBytes::new)
+                .map(PrettyPrinter::prettyPrintJson)
+                .toArray();
+
+        verifyAll("an object with bytes[] field.", objects);
+    }
+
+    private Stream<byte[]> byteArrayExamples() {
+        return Stream.of(
+                "".getBytes(),
+                " ".getBytes(),
+                "some regular text".getBytes(),
+                "{looks like json}".getBytes(),
+                "{\"name\":\"Bond\", \"age\":164, \"hungry\":true}".getBytes(),
+                "<xml><x>hello</x><y>goodbye</y></xml>".getBytes(),
+                "<looks like xml>".getBytes(),
+                null,
+                new byte[0],
+                new byte[]{1, 2, 3}
+        );
+    }
+
     private String readDocument(String fileName) throws IOException, URISyntaxException {
         return readString(Paths.get(getClass().getResource(fileName).toURI()), UTF_8);
     }
@@ -46,5 +71,10 @@ class PrettyPrinterShould {
     @Value
     static class ExampleObject {
         int value;
+    }
+
+    @Value
+    static class ExampleObjectWithBytes {
+        byte[] value;
     }
 }
