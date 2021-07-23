@@ -3,6 +3,7 @@ package lsd.format.json;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.Map;
 import java.util.Optional;
@@ -11,6 +12,7 @@ import static java.util.Optional.empty;
 import static lombok.AccessLevel.PRIVATE;
 import static org.apache.commons.lang3.StringUtils.isBlank;
 
+@Slf4j
 @NoArgsConstructor(access = PRIVATE)
 public class JsonPrettyPrinter {
 
@@ -25,6 +27,7 @@ public class JsonPrettyPrinter {
             var map = objectMapper.readValue(document, Map.class);
             return Optional.of(objectMapper.writeValueAsString(map));
         } catch (final JsonProcessingException e) {
+            log.trace(e.getMessage());
             return empty();
         }
     }

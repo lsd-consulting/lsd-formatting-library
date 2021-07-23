@@ -30,7 +30,7 @@ public class XmlPrettyPrinter {
             new XMLWriter(sw, format).write(parseText(document));
             return Optional.of(sw.toString());
         } catch (final IOException | DocumentException e) {
-            log.error(e.getMessage(), e);
+            log.trace(e.getMessage());
             return empty();
         }
     }
