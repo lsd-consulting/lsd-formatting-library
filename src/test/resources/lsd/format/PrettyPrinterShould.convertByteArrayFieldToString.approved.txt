@@ -12,10 +12,10 @@ an object with bytes[] field.[03] = {
 }
 an object with bytes[] field.[04] = {
   "value": {
-  "name": "Bond",
-  "age": 164,
-  "hungry": true
-}
+    "name": "Bond",
+    "age": 164,
+    "hungry": true
+  }
 }
 an object with bytes[] field.[05] = {
   "value": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\n<xml>\n  <x>hello</x>\n  <y>goodbye</y>\n</xml>\n"
