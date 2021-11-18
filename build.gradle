@@ -3,11 +3,12 @@ plugins {
     id 'maven-publish'
     id 'signing'
     id 'io.github.gradle-nexus.publish-plugin' version '1.1.0'
-    id 'pl.allegro.tech.build.axion-release' version '1.13.2'
+    id 'com.palantir.git-version' version '0.12.3'
     id 'jacoco'
 }
 
 group = 'io.github.lsd-consulting'
+version = gitVersion().replaceAll("^v", "")
 
 sourceCompatibility = '11'
 
@@ -85,7 +86,7 @@ publishing {
         mavenJava(MavenPublication) {
             groupId = "$group"
             artifactId = 'lsd-formatting-library'
-            version = "${scmVersion.version}"
+            version = "${version}"
 
             from components.java
             artifact sourcesJar
@@ -140,5 +141,14 @@ nexusPublishing {
 }
 
 signing {
-    sign publishing.publications.mavenJava
+    if (project.findProperty("signingKey")) {
+        // Use in-memory ascii-armored keys
+        def signingKey = findProperty("signingKey")
+        def signingPassword = findProperty("signingPassword")
+        useInMemoryPgpKeys(signingKey, signingPassword)
+        sign publishing.publications.mavenJava
+    } else {
+        // Use signing properties in ~/.gradle/gradle.properties
+        sign publishing.publications.mavenJava
+    }
 }
