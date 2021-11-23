@@ -9,6 +9,7 @@
 [![Nightly Build](https://github.com/lsd-consulting/lsd-formatting-library/actions/workflows/nightly.yml/badge.svg)](https://github.com/lsd-consulting/lsd-formatting-library/actions/workflows/nightly.yml)
 [![GitHub release](https://img.shields.io/github/release/lsd-consulting/lsd-formatting-library)](https://github.com/lsd-consulting/lsd-formatting-library/releases)
 ![Maven Central](https://img.shields.io/maven-central/v/io.github.lsd-consulting/lsd-formatting-library)
+![lsd-formatting-library Actions](https://api.meercode.io/badge/lsd-consulting/lsd-formatting-library?type=ci-score&branch=main&lastDay=14)
 
 This is a micro library that provides pretty printing functionality.
 
