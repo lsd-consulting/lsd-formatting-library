@@ -25,6 +25,11 @@ class PrettyPrinterShould {
     }
 
     @Test
+    void formatTopLevelJsonArray() throws IOException, URISyntaxException {
+        verify(prettyPrint(readDocument("/source/topLevelArray.json")), options);
+    }
+
+    @Test
     void formatXml() throws IOException, URISyntaxException {
         verifyXml(prettyPrint(readDocument("/source/source.xml")));
     }

@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import static java.util.Optional.empty;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -34,6 +35,19 @@ public class JsonPrettyPrinterShould {
     @Test
     public void handleNonJson() {
         final Optional<String> result = JsonPrettyPrinter.indentJson("< >");
+        assertThat(result, is(empty()));
+    }
+
+    @Test
+    public void handleTopLevelArray() {
+        final Optional<String> result = JsonPrettyPrinter.indentJson("[{\"key1\":\"value1\", \"key2\":\"value2\"}]\n");
+        assertTrue(result.isPresent());
+        assertThat(result.get(), equalTo("[ {\n  \"key1\": \"value1\",\n  \"key2\": \"value2\"\n} ]"));
+    }
+
+    @Test
+    public void handleBrokenTopLevelArray() {
+        final Optional<String> result = JsonPrettyPrinter.indentJson("[{\"key1\":\"value1\", \"key2\":\"value2\"}[][]]\n");
         assertThat(result, is(empty()));
     }
 }
