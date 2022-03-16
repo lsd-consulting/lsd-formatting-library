@@ -9,6 +9,7 @@ import com.fasterxml.jackson.module.kotlin.KotlinModule;
 import org.jetbrains.annotations.NotNull;
 
 import static com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES;
+import static com.fasterxml.jackson.databind.SerializationFeature.FAIL_ON_EMPTY_BEANS;
 import static com.fasterxml.jackson.databind.SerializationFeature.WRITE_DATES_AS_TIMESTAMPS;
 
 public class ObjectMapperCreator {
@@ -30,6 +31,7 @@ public class ObjectMapperCreator {
         objectMapper.registerModule(customModule());
         objectMapper.configure(WRITE_DATES_AS_TIMESTAMPS, false);
         objectMapper.configure(FAIL_ON_UNKNOWN_PROPERTIES, false);
+        objectMapper.configure(FAIL_ON_EMPTY_BEANS, false);
         return objectMapper;
     }
 
