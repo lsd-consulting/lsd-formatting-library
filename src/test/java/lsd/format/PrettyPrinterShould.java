@@ -23,6 +23,15 @@ class PrettyPrinterShould {
     void formatJson() throws IOException, URISyntaxException {
         verify(prettyPrint(readDocument("/source/source.json")), options);
     }
+    @Test
+    void formatJsonInString() throws IOException, URISyntaxException {
+        verify(prettyPrintJson(readDocument("/source/source.json")), options);
+    }
+
+    @Test
+    void formatJsonInByteArray() throws IOException, URISyntaxException {
+        verify(prettyPrintJson(readDocument("/source/source.json").getBytes(UTF_8)), options);
+    }
 
     @Test
     void formatTopLevelJsonArray() throws IOException, URISyntaxException {

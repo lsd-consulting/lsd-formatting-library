@@ -1,5 +1,6 @@
 package lsd.format;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.NoArgsConstructor;
 import lombok.SneakyThrows;
@@ -22,10 +23,14 @@ public class PrettyPrinter {
     @SneakyThrows
     public static String prettyPrintJson(final Object object) {
         try {
-            return prettyPrint(objectMapper.writeValueAsString(object));
+            return prettyPrint(getDocument(object));
         } catch (Exception e) {
             log.error("Problem serialising intercepted object for LSD: {}", e.getMessage());
             return null;
         }
+    }
+
+    private static String getDocument(Object object) throws JsonProcessingException {
+        return object instanceof String ? (String) object : objectMapper.writeValueAsString(object);
     }
 }

@@ -37,7 +37,7 @@ public class JsonPrettyPrinter {
                     return empty();
                 }
             }
-            log.trace(e.getMessage());
+            log.error(e.getMessage());
             return empty();
         } catch (final JsonProcessingException e) {
             log.trace(e.getMessage());
