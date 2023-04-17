@@ -17,11 +17,17 @@ public class PrettyPrinter {
     private static final ObjectMapper objectMapper = ObjectMapperCreator.create();
 
     public static String prettyPrint(final String document) {
-        return indentJson(document).orElseGet(() -> indentXml(document).orElse(document));
+        return document == null ? "" : indentJson(document).orElseGet(() -> indentXml(document).orElse(document));
     }
 
     @SneakyThrows
     public static String prettyPrintJson(final Object object) {
+        if (object == null) {
+            return "";
+        }
+        if (object instanceof byte[] && ((byte[])object).length == 0) {
+            return "";
+        }
         try {
             return prettyPrint(getDocument(object));
         } catch (Exception e) {

@@ -31,6 +31,20 @@ class ParserShould {
         assertThat(result, is(anEmptyMap()));
     }
 
+    @Test
+    void handleEmptyString() {
+        Map<String, Object> result = parse("");
+
+        assertThat(result, is(anEmptyMap()));
+    }
+
+    @Test
+    void handleMissingValue() {
+        Map<String, Object> result = parse(null);
+
+        assertThat(result, is(anEmptyMap()));
+    }
+
     private String readDocument(String fileName) throws IOException, URISyntaxException {
         return readString(Paths.get(requireNonNull(getClass().getResource(fileName)).toURI()), UTF_8);
     }

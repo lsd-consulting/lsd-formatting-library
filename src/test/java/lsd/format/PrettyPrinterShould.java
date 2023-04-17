@@ -11,6 +11,7 @@ import java.util.stream.Stream;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 import static java.nio.file.Files.readString;
+import static java.util.Objects.requireNonNull;
 import static lsd.format.PrettyPrinter.prettyPrint;
 import static lsd.format.PrettyPrinter.prettyPrintJson;
 import static org.approvaltests.Approvals.*;
@@ -23,14 +24,50 @@ class PrettyPrinterShould {
     void formatJson() throws IOException, URISyntaxException {
         verify(prettyPrint(readDocument("/source/source.json")), options);
     }
+
+    @Test
+    void formatEmptyString() {
+        verify(prettyPrint(""), options);
+    }
+
+    @Test
+    void formatNullValue() {
+        verify(prettyPrint(null), options);
+    }
+
     @Test
     void formatJsonInString() throws IOException, URISyntaxException {
         verify(prettyPrintJson(readDocument("/source/source.json")), options);
     }
 
     @Test
+    void formatJsonInEmptyString() {
+        verify(prettyPrintJson(""), options);
+    }
+
+    @Test
+    void formatJsonInNullValue() {
+        verify(prettyPrintJson(null), options);
+    }
+
+    @Test
     void formatJsonInByteArray() throws IOException, URISyntaxException {
         verify(prettyPrintJson(readDocument("/source/source.json").getBytes(UTF_8)), options);
+    }
+
+    @Test
+    void formatEmptyJsonByteArray() {
+        verify(prettyPrintJson("".getBytes(UTF_8)), options);
+    }
+
+    @Test
+    void formatArrayOfObjects() {
+        verify(prettyPrintJson(new Object[]{new Object()}), options);
+    }
+
+    @Test
+    void formatEmptyArrayOfObjects() {
+        verify(prettyPrintJson(new Object[]{}), options);
     }
 
     @Test
@@ -79,7 +116,7 @@ class PrettyPrinterShould {
     }
 
     private String readDocument(String fileName) throws IOException, URISyntaxException {
-        return readString(Paths.get(getClass().getResource(fileName).toURI()), UTF_8);
+        return readString(Paths.get(requireNonNull(getClass().getResource(fileName)).toURI()), UTF_8);
     }
 
     @Value
