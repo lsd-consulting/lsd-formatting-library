@@ -19,11 +19,16 @@ public class PrettyPrinter {
     @SneakyThrows
     public static String prettyPrint(Object document) {
         if (document == null) return "";
-        if (document instanceof byte[]) document = new String((byte[])document);
+        if (document instanceof byte[]) {
+            return intend(new String((byte[])document));
+        }
         if (!(document instanceof String)) {
             return objectMapper.writeValueAsString(document);
         }
-        final String doc = (String)document;
+        return intend((String)document);
+    }
+
+    private static String intend(String doc) {
         return indentJson(doc).orElseGet(() -> indentXml(doc).orElse(doc));
     }
 
