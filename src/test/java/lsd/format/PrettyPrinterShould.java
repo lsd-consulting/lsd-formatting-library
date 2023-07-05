@@ -26,6 +26,16 @@ class PrettyPrinterShould {
     }
 
     @Test
+    void formatJsonFromBytes() throws IOException, URISyntaxException {
+        verify(prettyPrint(readDocument("/source/source.json").getBytes(UTF_8)), options);
+    }
+
+    @Test
+    void formatJsonFromObject() {
+        verify(prettyPrint(new ExampleObject(2)), options);
+    }
+
+    @Test
     void formatEmptyString() {
         verify(prettyPrint(""), options);
     }

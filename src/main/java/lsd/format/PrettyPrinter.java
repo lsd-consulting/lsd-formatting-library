@@ -16,8 +16,15 @@ import static lsd.format.xml.XmlPrettyPrinter.indentXml;
 public class PrettyPrinter {
     private static final ObjectMapper objectMapper = ObjectMapperCreator.create();
 
-    public static String prettyPrint(final String document) {
-        return document == null ? "" : indentJson(document).orElseGet(() -> indentXml(document).orElse(document));
+    @SneakyThrows
+    public static String prettyPrint(Object document) {
+        if (document == null) return "";
+        if (document instanceof byte[]) document = new String((byte[])document);
+        if (!(document instanceof String)) {
+            return objectMapper.writeValueAsString(document);
+        }
+        final String doc = (String)document;
+        return indentJson(doc).orElseGet(() -> indentXml(doc).orElse(doc));
     }
 
     @SneakyThrows
