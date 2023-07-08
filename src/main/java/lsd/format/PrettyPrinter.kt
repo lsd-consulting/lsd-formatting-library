@@ -9,14 +9,14 @@ import lsd.format.xml.indentXml
 fun prettyPrint(document: Any?): String {
     if (document == null) return ""
     if (document is ByteArray) {
-        return intend(String((document as ByteArray?)!!))
+        return indent(String((document as ByteArray?)!!))
     }
     return if (document !is String) {
         objectMapper.writeValueAsString(document)
-    } else intend(document)
+    } else indent(document)
 }
 
-private fun intend(doc: String): String = indentJson(doc) ?: indentXml(doc) ?: doc
+private fun indent(doc: String): String = indentJson(doc) ?: indentXml(doc) ?: doc
 
 fun prettyPrintJson(obj: Any?): String? =
     if (obj == null) {
