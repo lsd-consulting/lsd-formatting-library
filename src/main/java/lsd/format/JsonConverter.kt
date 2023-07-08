@@ -8,7 +8,7 @@ import lsd.format.log.log
 fun convertJsonStringToMap(document: String?): Map<String, Any> =
     document?.let {
         try {
-            objectMapper.readValue<Map<String, Any>?>(it, object : TypeReference<Map<String, Any>>() {})
+            objectMapper.readValue(it, object : TypeReference<Map<String, Any>>() {})
         } catch (e: JsonProcessingException) {
             log().trace(e.message)
             HashMap()
