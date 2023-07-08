@@ -3,6 +3,7 @@ package lsd.format
 import com.fasterxml.jackson.core.JsonProcessingException
 import lsd.format.json.createObjectMapper
 import lsd.format.json.indentJson
+import lsd.format.log.log
 import lsd.format.xml.indentXml
 
 private val objectMapper = createObjectMapper()
