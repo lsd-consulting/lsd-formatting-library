@@ -7,7 +7,7 @@ import lsd.format.log.log
 
 private val objectMapper = createObjectMapper()
 
-fun parse(document: String?): Map<String, Any> =
+fun convertJsonStringToMap(document: String?): Map<String, Any> =
     document?.let {
         try {
             objectMapper.readValue<Map<String, Any>?>(it, object : TypeReference<Map<String, Any>>() {})
