@@ -2,10 +2,8 @@ package lsd.format
 
 import com.fasterxml.jackson.core.JsonProcessingException
 import com.fasterxml.jackson.core.type.TypeReference
-import lsd.format.json.createObjectMapper
+import lsd.format.json.objectMapper
 import lsd.format.log.log
-
-private val objectMapper = createObjectMapper()
 
 fun convertJsonStringToMap(document: String?): Map<String, Any> =
     document?.let {

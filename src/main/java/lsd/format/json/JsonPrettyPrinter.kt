@@ -6,8 +6,6 @@ import lsd.format.log.log
 import org.apache.commons.lang3.StringUtils
 import java.util.*
 
-private val objectMapper = createObjectMapper()
-
 fun indentJson(document: String?): String? {
     return if (StringUtils.isBlank(document)) {
         null
@@ -18,14 +16,14 @@ fun indentJson(document: String?): String? {
             return try {
                 indentJsonList(document)
             } catch (ex: JsonProcessingException) {
-                log().trace(ex.message) // trace
+                log().trace(ex.message)
                 null
             }
         }
         log().error(e.message)
         null
     } catch (e: JsonProcessingException) {
-        log().trace(e.message) // trace
+        log().trace(e.message)
         null
     }
 }
