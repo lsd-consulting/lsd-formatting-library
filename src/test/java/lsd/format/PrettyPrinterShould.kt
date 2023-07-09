@@ -49,6 +49,11 @@ internal class PrettyPrinterShould {
     }
 
     @Test
+    fun formatBlankString() {
+        verify(prettyPrint(" "), options)
+    }
+
+    @Test
     fun formatNullValue() {
         verify(prettyPrint(null), options)
     }
@@ -81,8 +86,13 @@ internal class PrettyPrinterShould {
     }
 
     @Test
+    fun formatBlankJsonByteArray() {
+        verify(prettyPrint(" ".toByteArray(StandardCharsets.UTF_8)), options)
+    }
+
+    @Test
     fun formatArrayOfObjects() {
-        verify(prettyPrint(arrayOf<Any>(Any())), options)
+        verify(prettyPrint(arrayOf(Any())), options)
     }
 
     @Test

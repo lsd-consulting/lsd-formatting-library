@@ -10,11 +10,11 @@ fun prettyPrint(obj: Any?): String =
         try {
             when (obj) {
                 is ByteArray -> {
-                    if (obj.isEmpty()) "" else indent(String((obj)))
+                    if (obj.isEmpty()) "" else indent(String((obj)).trim())
                 }
 
                 is String -> {
-                    if (obj.isEmpty()) "" else indent(obj)
+                    if (obj.isEmpty()) "" else indent(obj.trim())
                 }
 
                 else -> indent(objectMapper.writeValueAsString(obj))
