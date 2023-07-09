@@ -2,8 +2,8 @@ package lsd.format
 
 import com.fasterxml.jackson.core.JsonProcessingException
 import com.fasterxml.jackson.core.type.TypeReference
+import lsd.format.config.log
 import lsd.format.json.objectMapper
-import lsd.format.log.log
 
 fun convertJsonStringToMap(document: String?): Map<String, Any> =
     document?.let {

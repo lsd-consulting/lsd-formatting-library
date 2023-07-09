@@ -2,7 +2,7 @@ package lsd.format.json
 
 import com.fasterxml.jackson.core.JsonProcessingException
 import com.fasterxml.jackson.databind.exc.MismatchedInputException
-import lsd.format.log.log
+import lsd.format.config.log
 import org.apache.commons.lang3.StringUtils
 import java.util.*
 

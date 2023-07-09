@@ -1,6 +1,6 @@
 package lsd.format.xml
 
-import lsd.format.log.log
+import lsd.format.config.log
 import org.dom4j.DocumentException
 import org.dom4j.DocumentHelper
 import org.dom4j.io.OutputFormat

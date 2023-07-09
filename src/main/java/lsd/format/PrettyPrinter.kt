@@ -1,9 +1,9 @@
 package lsd.format
 
 import com.fasterxml.jackson.core.JsonProcessingException
+import lsd.format.config.log
 import lsd.format.json.indentJson
 import lsd.format.json.objectMapper
-import lsd.format.log.log
 import lsd.format.xml.indentXml
 
 fun prettyPrint(document: Any?): String {
