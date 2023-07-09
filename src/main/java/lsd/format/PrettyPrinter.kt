@@ -5,7 +5,7 @@ import lsd.format.json.indentJson
 import lsd.format.json.objectMapper
 import lsd.format.xml.indentXml
 
-fun prettyPrintJson(obj: Any?): String =
+fun prettyPrint(obj: Any?): String =
     obj?.let {
         try {
             when (obj) {

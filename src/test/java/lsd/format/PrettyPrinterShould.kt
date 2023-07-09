@@ -29,95 +29,95 @@ internal class PrettyPrinterShould {
     @Test
     @Throws(IOException::class, URISyntaxException::class)
     fun formatJson() {
-        verify(prettyPrintJson(readDocument("/source/source.json")), options)
+        verify(prettyPrint(readDocument("/source/source.json")), options)
     }
 
     @Test
     @Throws(IOException::class, URISyntaxException::class)
     fun formatJsonFromBytes() {
-        verify(prettyPrintJson(readDocument("/source/source.json").toByteArray(StandardCharsets.UTF_8)), options)
+        verify(prettyPrint(readDocument("/source/source.json").toByteArray(StandardCharsets.UTF_8)), options)
     }
 
     @Test
     fun formatJsonFromObject() {
-        verify(prettyPrintJson(ExampleObject(2)), options)
+        verify(prettyPrint(ExampleObject(2)), options)
     }
 
     @Test
     fun formatEmptyString() {
-        verify(prettyPrintJson(""), options)
+        verify(prettyPrint(""), options)
     }
 
     @Test
     fun formatNullValue() {
-        verify(prettyPrintJson(null), options)
+        verify(prettyPrint(null), options)
     }
 
     @Test
     @Throws(IOException::class, URISyntaxException::class)
     fun formatJsonInString() {
-        verify(prettyPrintJson(readDocument("/source/source.json")), options)
+        verify(prettyPrint(readDocument("/source/source.json")), options)
     }
 
     @Test
     fun formatJsonInEmptyString() {
-        verify(prettyPrintJson(""), options)
+        verify(prettyPrint(""), options)
     }
 
     @Test
     fun formatJsonInNullValue() {
-        verify(prettyPrintJson(null), options)
+        verify(prettyPrint(null), options)
     }
 
     @Test
     @Throws(IOException::class, URISyntaxException::class)
     fun formatJsonInByteArray() {
-        verify(prettyPrintJson(readDocument("/source/source.json").toByteArray(StandardCharsets.UTF_8)), options)
+        verify(prettyPrint(readDocument("/source/source.json").toByteArray(StandardCharsets.UTF_8)), options)
     }
 
     @Test
     fun formatEmptyJsonByteArray() {
-        verify(prettyPrintJson("".toByteArray(StandardCharsets.UTF_8)), options)
+        verify(prettyPrint("".toByteArray(StandardCharsets.UTF_8)), options)
     }
 
     @Test
     fun formatArrayOfObjects() {
-        verify(prettyPrintJson(arrayOf<Any>(Any())), options)
+        verify(prettyPrint(arrayOf<Any>(Any())), options)
     }
 
     @Test
     fun formatEmptyArrayOfObjects() {
-        verify(prettyPrintJson(arrayOf<Any>()), options)
+        verify(prettyPrint(arrayOf<Any>()), options)
     }
 
     @Test
     @Throws(IOException::class, URISyntaxException::class)
     fun formatTopLevelJsonArray() {
-        verify(prettyPrintJson(readDocument("/source/topLevelArray.json")), options)
+        verify(prettyPrint(readDocument("/source/topLevelArray.json")), options)
     }
 
     @Test
     @Throws(IOException::class, URISyntaxException::class)
     fun formatXml() {
-        Approvals.verifyXml(prettyPrintJson(readDocument("/source/source.xml")))
+        Approvals.verifyXml(prettyPrint(readDocument("/source/source.xml")))
     }
 
     @Test
     @Throws(IOException::class, URISyntaxException::class)
     fun returnOriginalIfNeitherJsonNorXml() {
-        verify(prettyPrintJson(readDocument("/source/source.txt")))
+        verify(prettyPrint(readDocument("/source/source.txt")))
     }
 
     @Test
     fun serialiseObjectToJson() {
-        verify(prettyPrintJson(ExampleObject(2)), options)
+        verify(prettyPrint(ExampleObject(2)), options)
     }
 
     @Test
     fun convertByteArrayFieldToString() {
         val objects = byteArrayExamples()
             .map { ExampleObjectWithBytes(it) }
-            .map { prettyPrintJson(it) }
+            .map { prettyPrint(it) }
             .toArray()
         Approvals.verifyAll("an object with bytes[] field.", objects)
     }
@@ -128,7 +128,7 @@ internal class PrettyPrinterShould {
 
         every { objectMapper } throws Exception("Blah")
 
-        verify(prettyPrintJson(ExampleObject()), options)
+        verify(prettyPrint(ExampleObject()), options)
     }
 
     private fun byteArrayExamples(): Stream<ByteArray?> {
