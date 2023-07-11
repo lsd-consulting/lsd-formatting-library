@@ -10,7 +10,7 @@ fun convertJsonStringToMap(document: String?): Map<String, Any> =
         try {
             objectMapper.readValue(it, object : TypeReference<Map<String, Any>>() {})
         } catch (e: JsonProcessingException) {
-            log().trace(e.message)
+            log().debug(e.message)
             HashMap()
         }
     } ?: HashMap()

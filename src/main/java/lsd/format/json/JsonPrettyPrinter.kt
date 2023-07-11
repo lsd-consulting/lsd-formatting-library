@@ -23,7 +23,7 @@ fun indentJson(document: String?): String? {
         log().error(e.message)
         null
     } catch (e: JsonProcessingException) {
-        log().trace(e.message)
+        log().debug(e.message)
         null
     }
 }
