@@ -15,7 +15,7 @@ version = gitVersion().replaceAll("^v", "")
 logger.lifecycle("Version=$version")
 
 kotlin {
-    jvmToolchain(17)
+    jvmToolchain(11)
 }
 
 repositories {
