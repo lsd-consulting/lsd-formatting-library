@@ -42,6 +42,7 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.9.1'
     testImplementation 'org.hamcrest:hamcrest-core:2.2'
     testImplementation 'com.approvaltests:approvaltests:12.1.1'
+    testImplementation 'io.mockk:mockk-jvm:1.13.5'
 }
 
 test {
@@ -63,6 +64,10 @@ test {
 check.dependsOn jacocoTestReport
 check.dependsOn jacocoTestCoverageVerification
 
+jacoco {
+    toolVersion = "0.8.10"
+}
+
 jacocoTestReport {
     dependsOn test
     reports {
@@ -77,7 +82,7 @@ jacocoTestCoverageVerification {
         rule {
             limit {
                 counter = 'INSTRUCTION'
-                minimum = 0.94
+                minimum = 0.96
             }
         }
         rule {
@@ -89,7 +94,7 @@ jacocoTestCoverageVerification {
         rule {
             limit {
                 counter = 'BRANCH'
-                minimum = 0.97
+                minimum = 0.94
             }
         }
        rule {

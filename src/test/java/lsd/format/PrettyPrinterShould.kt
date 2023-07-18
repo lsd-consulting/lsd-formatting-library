@@ -1,8 +1,13 @@
 package lsd.format
 
+import io.mockk.every
+import io.mockk.mockkStatic
+import io.mockk.unmockkAll
+import lsd.format.json.objectMapper
 import org.approvaltests.Approvals
 import org.approvaltests.Approvals.verify
 import org.approvaltests.core.Options
+import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Test
 import java.io.IOException
 import java.net.URISyntaxException
@@ -12,8 +17,14 @@ import java.nio.file.Paths
 import java.util.*
 import java.util.stream.Stream
 
+
 internal class PrettyPrinterShould {
     private val options = Options().forFile().withExtension(".json")
+
+    @AfterEach
+    fun setup() {
+        unmockkAll()
+    }
 
     @Test
     @Throws(IOException::class, URISyntaxException::class)
@@ -38,6 +49,11 @@ internal class PrettyPrinterShould {
     }
 
     @Test
+    fun formatBlankString() {
+        verify(prettyPrint(" "), options)
+    }
+
+    @Test
     fun formatNullValue() {
         verify(prettyPrint(null), options)
     }
@@ -45,38 +61,43 @@ internal class PrettyPrinterShould {
     @Test
     @Throws(IOException::class, URISyntaxException::class)
     fun formatJsonInString() {
-        verify(prettyPrintJson(readDocument("/source/source.json")), options)
+        verify(prettyPrint(readDocument("/source/source.json")), options)
     }
 
     @Test
     fun formatJsonInEmptyString() {
-        verify(prettyPrintJson(""), options)
+        verify(prettyPrint(""), options)
     }
 
     @Test
     fun formatJsonInNullValue() {
-        verify(prettyPrintJson(null), options)
+        verify(prettyPrint(null), options)
     }
 
     @Test
     @Throws(IOException::class, URISyntaxException::class)
     fun formatJsonInByteArray() {
-        verify(prettyPrintJson(readDocument("/source/source.json").toByteArray(StandardCharsets.UTF_8)), options)
+        verify(prettyPrint(readDocument("/source/source.json").toByteArray(StandardCharsets.UTF_8)), options)
     }
 
     @Test
     fun formatEmptyJsonByteArray() {
-        verify(prettyPrintJson("".toByteArray(StandardCharsets.UTF_8)), options)
+        verify(prettyPrint("".toByteArray(StandardCharsets.UTF_8)), options)
+    }
+
+    @Test
+    fun formatBlankJsonByteArray() {
+        verify(prettyPrint(" ".toByteArray(StandardCharsets.UTF_8)), options)
     }
 
     @Test
     fun formatArrayOfObjects() {
-        verify(prettyPrintJson(arrayOf<Any>(Any())), options)
+        verify(prettyPrint(arrayOf(Any())), options)
     }
 
     @Test
     fun formatEmptyArrayOfObjects() {
-        verify(prettyPrintJson(arrayOf<Any>()), options)
+        verify(prettyPrint(arrayOf<Any>()), options)
     }
 
     @Test
@@ -99,16 +120,25 @@ internal class PrettyPrinterShould {
 
     @Test
     fun serialiseObjectToJson() {
-        verify(prettyPrintJson(ExampleObject(2)), options)
+        verify(prettyPrint(ExampleObject(2)), options)
     }
 
     @Test
     fun convertByteArrayFieldToString() {
         val objects = byteArrayExamples()
             .map { ExampleObjectWithBytes(it) }
-            .map { prettyPrintJson(it) }
+            .map { prettyPrint(it) }
             .toArray()
         Approvals.verifyAll("an object with bytes[] field.", objects)
+    }
+
+    @Test
+    fun handleSerialisationFailure() {
+        mockkStatic("lsd.format.json.ObjectMapperCreatorKt")
+
+        every { objectMapper } throws Exception("Blah")
+
+        verify(prettyPrint(ExampleObject()), options)
     }
 
     private fun byteArrayExamples(): Stream<ByteArray?> {
@@ -120,7 +150,7 @@ internal class PrettyPrinterShould {
             "{\"name\":\"Bond\", \"age\":164, \"hungry\":true}".toByteArray(),
             "<xml><x>hello</x><y>goodbye</y></xml>".toByteArray(),
             "<looks like xml>".toByteArray(),
-            null, ByteArray(0), byteArrayOf(1, 2, 3)
+            null, ByteArray(0), byteArrayOf(1, 2, 3),
         )
     }
 
