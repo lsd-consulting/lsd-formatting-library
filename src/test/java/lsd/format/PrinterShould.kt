@@ -25,77 +25,77 @@ internal class PrinterShould {
     }
 
     @Test
-    fun flattenJson() {
+    fun `flatten json`() {
         verify(printFlat(readDocument("/source/pretty.json")), options)
     }
 
     @Test
-    fun flattenJsonFromBytes() {
+    fun `flatten json from bytes`() {
         verify(printFlat(readDocument("/source/pretty.json").toByteArray(StandardCharsets.UTF_8)), options)
     }
 
     @Test
-    fun flattenJsonFromObject() {
+    fun `flatten json from object`() {
         verify(printFlat(ExampleObject(2)), options)
     }
 
     @Test
-    fun handleEmptyString() {
+    fun `handle empty string`() {
         verify(printFlat(""), options)
     }
 
     @Test
-    fun handleBlankString() {
+    fun `handle blank string`() {
         verify(printFlat(" "), options)
     }
 
     @Test
-    fun handleNullValue() {
+    fun `handle null value`() {
         verify(printFlat(null), options)
     }
 
     @Test
-    fun handleEmptyJsonByteArray() {
+    fun `handle empty json byte array`() {
         verify(printFlat("".toByteArray(StandardCharsets.UTF_8)), options)
     }
 
     @Test
-    fun handleBlankJsonByteArray() {
+    fun `handle blank json byte array`() {
         verify(printFlat(" ".toByteArray(StandardCharsets.UTF_8)), options)
     }
 
     @Test
-    fun handleArrayOfEmptyObjects() {
+    fun `handle array of empty objects`() {
         verify(printFlat(arrayOf(Any())), options)
     }
 
     @Test
-    fun handleEmptyArrayOfObjects() {
+    fun `handle empty array of objects`() {
         verify(printFlat(arrayOf<Any>()), options)
     }
 
     @Test
-    fun handleArrayOfObjects() {
+    fun `handle array of objects`() {
         verify(printFlat(arrayOf(ExampleObject(1), ExampleObject(2))), options)
     }
 
     @Test
-    fun formatTopLevelJsonArray() {
+    fun `format top level json array`() {
         verify(printFlat(readDocument("/source/prettyTopLevelArray.json")), options)
     }
 
     @Test
-    fun formatXml() {
+    fun `format xml`() {
         verify(printFlat(readDocument("/source/pretty.xml")))
     }
 
     @Test
-    fun returnOriginalIfNeitherJsonNorXml() {
+    fun `return original if neither json nor xml`() {
         verify(printFlat(readDocument("/source/source.txt")))
     }
 
     @Test
-    fun convertByteArrayFieldToString() {
+    fun `convert byte array field to string`() {
         val objects = byteArrayExamples()
             .map { ExampleObjectWithBytes(it) }
             .map { printFlat(it) }
@@ -104,7 +104,7 @@ internal class PrinterShould {
     }
 
     @Test
-    fun handleSerialisationFailure() {
+    fun `handle serialisation failure`() {
         mockkStatic("lsd.format.json.ObjectMapperCreatorKt")
 
         every { objectMapper } throws Exception("Blah")

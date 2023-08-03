@@ -27,81 +27,81 @@ internal class PrettyPrinterShould {
 
     @Test
     @Throws(IOException::class, URISyntaxException::class)
-    fun formatJson() {
+    fun `format json`() {
         verify(prettyPrint(readDocument("/source/flattened.json")), options)
     }
 
     @Test
     @Throws(IOException::class, URISyntaxException::class)
-    fun formatJsonFromBytes() {
+    fun `format json from bytes`() {
         verify(prettyPrint(readDocument("/source/flattened.json").toByteArray(StandardCharsets.UTF_8)), options)
     }
 
     @Test
-    fun formatJsonFromObject() {
+    fun `format json from object`() {
         verify(prettyPrint(ExampleObject(2)), options)
     }
 
     @Test
-    fun formatEmptyString() {
+    fun `format empty string`() {
         verify(prettyPrint(""), options)
     }
 
     @Test
-    fun formatBlankString() {
+    fun `format blank string`() {
         verify(prettyPrint(" "), options)
     }
 
     @Test
-    fun formatNullValue() {
+    fun `format null value`() {
         verify(prettyPrint(null), options)
     }
 
     @Test
-    fun formatEmptyJsonByteArray() {
+    fun `format empty json byte array`() {
         verify(prettyPrint("".toByteArray(StandardCharsets.UTF_8)), options)
     }
 
     @Test
-    fun formatBlankJsonByteArray() {
+    fun `format blank json byte array`() {
         verify(prettyPrint(" ".toByteArray(StandardCharsets.UTF_8)), options)
     }
 
     @Test
-    fun formatArrayOfObjects() {
+    fun `format array of objects`() {
         verify(prettyPrint(arrayOf(Any())), options)
     }
 
     @Test
-    fun formatEmptyArrayOfObjects() {
+    fun `format empty array of objects`() {
         verify(prettyPrint(arrayOf<Any>()), options)
     }
 
     @Test
-    fun handleArrayOfObjects() {
+    fun `handle array of objects`() {
         verify(prettyPrint(arrayOf(ExampleObject(1), ExampleObject(2))), options)
     }
 
     @Test
     @Throws(IOException::class, URISyntaxException::class)
-    fun formatTopLevelJsonArray() {
+    fun `format top level json array`() {
         verify(prettyPrint(readDocument("/source/flattenedTopLevelArray.json")), options)
     }
 
     @Test
     @Throws(IOException::class, URISyntaxException::class)
-    fun formatXml() {
+    fun `format xml`() {
         verifyXml(prettyPrint(readDocument("/source/flattened.xml")))
     }
 
     @Test
     @Throws(IOException::class, URISyntaxException::class)
-    fun returnOriginalIfNeitherJsonNorXml() {
+    fun `return original if neither json nor xml`() {
         verify(prettyPrint(readDocument("/source/source.txt")))
     }
 
     @Test
-    fun convertByteArrayFieldToString() {
+    fun `convert byte array field to string`() {
         val objects = byteArrayExamples()
             .map { ExampleObjectWithBytes(it) }
             .map { prettyPrint(it) }
@@ -110,7 +110,7 @@ internal class PrettyPrinterShould {
     }
 
     @Test
-    fun handleSerialisationFailure() {
+    fun `handle serialisation failure`() {
         mockkStatic("lsd.format.json.ObjectMapperCreatorKt")
 
         every { objectMapper } throws Exception("Blah")
