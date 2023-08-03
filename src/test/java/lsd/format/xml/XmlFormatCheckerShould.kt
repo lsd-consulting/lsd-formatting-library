@@ -1,23 +1,23 @@
 package lsd.format.xml
 
+import org.junit.jupiter.api.Assertions.assertFalse
+import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
-
-import org.junit.jupiter.api.Assertions.*
 
 class XmlFormatCheckerShould {
 
     @Test
-    fun identifyValidXml() {
+    fun `identify valid xml`() {
         assertTrue(isValidXml("<a></a>"))
     }
 
     @Test
-    fun identifyInvalidXml() {
+    fun `identify invalid xml`() {
         assertFalse(isValidXml("<>"))
     }
 
     @Test
-    fun identifyEmptyValueAsInvalidXml() {
+    fun `identify empty value as invalid xml`() {
         assertFalse(isValidXml(""))
     }
 }

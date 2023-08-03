@@ -1,28 +1,28 @@
 package lsd.format.json
 
+import org.junit.jupiter.api.Assertions.assertFalse
+import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
-
-import org.junit.jupiter.api.Assertions.*
 
 class JsonFormatCheckerShould {
 
     @Test
-    fun identifyValidJson() {
+    fun `identify valid json`() {
         assertTrue(isValidJson("{}"))
     }
 
     @Test
-    fun identifyValidJsonArray() {
+    fun `identify valid json array`() {
         assertTrue(isValidJson("[]"))
     }
 
     @Test
-    fun identifyInvalidJsonArray() {
+    fun `identify invalid json array`() {
         assertFalse(isValidJson("{"))
     }
 
     @Test
-    fun identifyEmptyValueAsInvalidJson() {
+    fun `identify empty value as invalid json`() {
         assertFalse(isValidJson(""))
     }
 }
