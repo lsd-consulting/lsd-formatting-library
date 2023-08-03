@@ -125,6 +125,7 @@ internal class PrettyPrinterShould {
             "some regular text".toByteArray(),
             "{looks like json}".toByteArray(),
             "{\"name\":\"Bond\", \"age\":164, \"hungry\":true}".toByteArray(),
+            "[{\"name\":\"Bond\", \"age\":164, \"hungry\":true}]".toByteArray(),
             "<xml><x>hello</x><y>goodbye</y></xml>".toByteArray(),
             "<looks like xml>".toByteArray(),
             null, ByteArray(0), byteArrayOf(1, 2, 3),
