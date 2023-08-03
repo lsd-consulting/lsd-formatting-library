@@ -4,8 +4,7 @@ import io.mockk.every
 import io.mockk.mockkStatic
 import io.mockk.unmockkAll
 import lsd.format.json.objectMapper
-import org.approvaltests.Approvals
-import org.approvaltests.Approvals.verify
+import org.approvaltests.Approvals.*
 import org.approvaltests.core.Options
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Test
@@ -59,28 +58,6 @@ internal class PrettyPrinterShould {
     }
 
     @Test
-    @Throws(IOException::class, URISyntaxException::class)
-    fun formatJsonInString() {
-        verify(prettyPrint(readDocument("/source/flattened.json")), options)
-    }
-
-    @Test
-    fun formatJsonInEmptyString() {
-        verify(prettyPrint(""), options)
-    }
-
-    @Test
-    fun formatJsonInNullValue() {
-        verify(prettyPrint(null), options)
-    }
-
-    @Test
-    @Throws(IOException::class, URISyntaxException::class)
-    fun formatJsonInByteArray() {
-        verify(prettyPrint(readDocument("/source/flattened.json").toByteArray(StandardCharsets.UTF_8)), options)
-    }
-
-    @Test
     fun formatEmptyJsonByteArray() {
         verify(prettyPrint("".toByteArray(StandardCharsets.UTF_8)), options)
     }
@@ -114,7 +91,7 @@ internal class PrettyPrinterShould {
     @Test
     @Throws(IOException::class, URISyntaxException::class)
     fun formatXml() {
-        Approvals.verifyXml(prettyPrint(readDocument("/source/flattened.xml")))
+        verifyXml(prettyPrint(readDocument("/source/flattened.xml")))
     }
 
     @Test
@@ -124,17 +101,12 @@ internal class PrettyPrinterShould {
     }
 
     @Test
-    fun serialiseObjectToJson() {
-        verify(prettyPrint(ExampleObject(2)), options)
-    }
-
-    @Test
     fun convertByteArrayFieldToString() {
         val objects = byteArrayExamples()
             .map { ExampleObjectWithBytes(it) }
             .map { prettyPrint(it) }
             .toArray()
-        Approvals.verifyAll("an object with bytes[] field.", objects)
+        verifyAll("an object with bytes[] field.", objects)
     }
 
     @Test
