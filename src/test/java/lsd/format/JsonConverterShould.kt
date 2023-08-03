@@ -12,8 +12,8 @@ internal class JsonConverterShould {
 
     @Test
     fun `parse json`() {
-        val result = convertJsonStringToMap(readDocument("/source/source.json"))
-        assertThat(result, hasEntry("key", listOf("value1", "value2", "value3")))
+        val result = convertJsonStringToMap(readDocument("/source/pretty.json"))
+        assertThat(result, hasEntry("key", listOf("value  1", "value 2", "value3")))
     }
 
     @Test

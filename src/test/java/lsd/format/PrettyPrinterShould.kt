@@ -29,13 +29,13 @@ internal class PrettyPrinterShould {
     @Test
     @Throws(IOException::class, URISyntaxException::class)
     fun formatJson() {
-        verify(prettyPrint(readDocument("/source/source.json")), options)
+        verify(prettyPrint(readDocument("/source/flattened.json")), options)
     }
 
     @Test
     @Throws(IOException::class, URISyntaxException::class)
     fun formatJsonFromBytes() {
-        verify(prettyPrint(readDocument("/source/source.json").toByteArray(StandardCharsets.UTF_8)), options)
+        verify(prettyPrint(readDocument("/source/flattened.json").toByteArray(StandardCharsets.UTF_8)), options)
     }
 
     @Test
@@ -61,7 +61,7 @@ internal class PrettyPrinterShould {
     @Test
     @Throws(IOException::class, URISyntaxException::class)
     fun formatJsonInString() {
-        verify(prettyPrint(readDocument("/source/source.json")), options)
+        verify(prettyPrint(readDocument("/source/flattened.json")), options)
     }
 
     @Test
@@ -77,7 +77,7 @@ internal class PrettyPrinterShould {
     @Test
     @Throws(IOException::class, URISyntaxException::class)
     fun formatJsonInByteArray() {
-        verify(prettyPrint(readDocument("/source/source.json").toByteArray(StandardCharsets.UTF_8)), options)
+        verify(prettyPrint(readDocument("/source/flattened.json").toByteArray(StandardCharsets.UTF_8)), options)
     }
 
     @Test
@@ -103,13 +103,13 @@ internal class PrettyPrinterShould {
     @Test
     @Throws(IOException::class, URISyntaxException::class)
     fun formatTopLevelJsonArray() {
-        verify(prettyPrint(readDocument("/source/topLevelArray.json")), options)
+        verify(prettyPrint(readDocument("/source/flattenedTopLevelArray.json")), options)
     }
 
     @Test
     @Throws(IOException::class, URISyntaxException::class)
     fun formatXml() {
-        Approvals.verifyXml(prettyPrint(readDocument("/source/source.xml")))
+        Approvals.verifyXml(prettyPrint(readDocument("/source/flattened.xml")))
     }
 
     @Test
