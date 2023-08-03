@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.SerializerProvider
 import com.fasterxml.jackson.databind.ser.std.StdSerializer
 import lsd.format.config.log
 import lsd.format.xml.indentXml
+import lsd.format.xml.isValidXml
 import java.io.IOException
 
 /**
@@ -17,14 +18,14 @@ class ByteArraySerializer @JvmOverloads constructor(t: Class<ByteArray?>? = null
     override fun serialize(bytes: ByteArray, generator: JsonGenerator, provider: SerializerProvider) {
         log().trace("Serialising:{}", bytes)
         val content = String(bytes).trim()
-        if (content.startsWith("{")) {
+        if (isValidJson(content)) {
             val indentJson = indentJson(content)
             if (indentJson != null) {
                 generator.writeRawValue(indentJson)
                 return
             }
         }
-        if (content.startsWith("<")) {
+        if (isValidXml(content)) {
             val indentXml = indentXml(content)
             if (indentXml != null) {
                 generator.writeString(indentXml)
