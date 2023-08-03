@@ -20,17 +20,13 @@ class ByteArraySerializer @JvmOverloads constructor(t: Class<ByteArray?>? = null
         val content = String(bytes).trim()
         if (isValidJson(content)) {
             val indentJson = indentJson(content)
-            if (indentJson != null) {
-                generator.writeRawValue(indentJson)
-                return
-            }
+            generator.writeRawValue(indentJson)
+            return
         }
         if (isValidXml(content)) {
             val indentXml = indentXml(content)
-            if (indentXml != null) {
-                generator.writeString(indentXml)
-                return
-            }
+            generator.writeString(indentXml)
+            return
         }
         generator.writeString(content)
     }
