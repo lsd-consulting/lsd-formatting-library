@@ -20,4 +20,9 @@ class JsonFormatCheckerShould {
     fun identifyInvalidJsonArray() {
         assertFalse(isValidJson("{"))
     }
+
+    @Test
+    fun identifyEmptyValueAsInvalidJson() {
+        assertFalse(isValidJson(""))
+    }
 }

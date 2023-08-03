@@ -8,6 +8,9 @@ private val mapper: ObjectMapper = ObjectMapper().enable(DeserializationFeature.
 
 fun isValidJson(doc: String): Boolean {
     try {
+        if (doc.isBlank()) {
+            return false
+        }
         mapper.readTree(doc)
     } catch (e: JacksonException) {
         return false

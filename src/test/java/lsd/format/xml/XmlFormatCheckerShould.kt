@@ -15,4 +15,9 @@ class XmlFormatCheckerShould {
     fun identifyInvalidXml() {
         assertFalse(isValidXml("<>"))
     }
+
+    @Test
+    fun identifyEmptyValueAsInvalidXml() {
+        assertFalse(isValidXml(""))
+    }
 }
