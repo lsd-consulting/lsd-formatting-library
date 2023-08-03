@@ -101,6 +101,11 @@ internal class PrettyPrinterShould {
     }
 
     @Test
+    fun handleArrayOfObjects() {
+        verify(prettyPrint(arrayOf(ExampleObject(1), ExampleObject(2))), options)
+    }
+
+    @Test
     @Throws(IOException::class, URISyntaxException::class)
     fun formatTopLevelJsonArray() {
         verify(prettyPrint(readDocument("/source/flattenedTopLevelArray.json")), options)

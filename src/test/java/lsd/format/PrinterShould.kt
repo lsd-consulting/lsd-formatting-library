@@ -75,6 +75,11 @@ internal class PrinterShould {
     }
 
     @Test
+    fun handleArrayOfObjects() {
+        verify(printFlat(arrayOf(ExampleObject(1), ExampleObject(2))), options)
+    }
+
+    @Test
     fun formatTopLevelJsonArray() {
         verify(printFlat(readDocument("/source/prettyTopLevelArray.json")), options)
     }
@@ -114,6 +119,7 @@ internal class PrinterShould {
             "some regular text".toByteArray(),
             "{looks like json}".toByteArray(),
             "{\"name\":\"Bond\", \"age\":164, \"hungry\":true}".toByteArray(),
+            "[{\"name\":\"Bond\", \"age\":164, \"hungry\":true}]".toByteArray(),
             "<xml><x>hello</x><y>goodbye</y></xml>".toByteArray(),
             "<looks like xml>".toByteArray(),
             null, ByteArray(0), byteArrayOf(1, 2, 3),
