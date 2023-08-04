@@ -96,6 +96,12 @@ internal class PrettyPrinterShould {
 
     @Test
     @Throws(IOException::class, URISyntaxException::class)
+    fun `format xml with multiline header`() {
+        verify(prettyPrint(readDocument("/source/flattenedMultilineHeader.xml")))
+    }
+
+    @Test
+    @Throws(IOException::class, URISyntaxException::class)
     fun `return original if neither json nor xml`() {
         verify(prettyPrint(readDocument("/source/source.txt")))
     }

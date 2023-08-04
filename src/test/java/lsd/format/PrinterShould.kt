@@ -90,6 +90,11 @@ internal class PrinterShould {
     }
 
     @Test
+    fun `format xml with multiline header`() {
+        verify(printFlat(readDocument("/source/multilineHeader.xml")))
+    }
+
+    @Test
     fun `return original if neither json nor xml`() {
         verify(printFlat(readDocument("/source/source.txt")))
     }
