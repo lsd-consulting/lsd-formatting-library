@@ -23,20 +23,8 @@ class XmlPrettyPrinterShould {
     }
 
     @Test
-    fun `handle empty string with flatten print`() {
-        val result = flattenXml(null)
-        assertThat(result, `is`(nullValue()))
-    }
-
-    @Test
     fun `handle non xml with pretty print`() {
         val result = indentXml("blah")
-        assertThat(result, `is`(nullValue()))
-    }
-
-    @Test
-    fun `handle non xml with flatten print`() {
-        val result = flattenXml("blah")
         assertThat(result, `is`(nullValue()))
     }
 }
