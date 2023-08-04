@@ -96,7 +96,7 @@ internal class PrettyPrinterShould {
 
     @Test
     @Throws(IOException::class, URISyntaxException::class)
-    fun `format xml with multiline header`() {
+    fun `remove redundant values from a multiline header`() {
         verify(prettyPrint(readDocument("/source/flattenedMultilineHeader.xml")))
     }
 

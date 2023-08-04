@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<ns10:PublishGOTDEventsRequest xmlns:ns10="urn:ford/interface/GOTDPublication/v1" xmlns="urn:ford/VehicleOrder/v2.0" xmlns:ns9="urn:ford/Consumer/v1.0" xmlns:ns16="urn:ford/VehicleOrder/UnitDetail/v4" xmlns:ns2="urn:ford/interface/GOTDPublication/v1">
+<ns10:PublishGOTDEventsRequest xmlns:ns10="urn:ford/interface/GOTDPublication/v1" xmlns="urn:ford/VehicleOrder/v2.0" xmlns:ns16="urn:ford/VehicleOrder/UnitDetail/v4" xmlns:ns2="urn:ford/interface/GOTDPublication/v1">
   <ns10:Part PartID="Order_2950815949">
     <ns10:VehicleOrder/>
   </ns10:Part>
