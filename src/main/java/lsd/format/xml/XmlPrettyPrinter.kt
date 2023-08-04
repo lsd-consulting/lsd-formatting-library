@@ -19,7 +19,7 @@ fun indentXml(document: String?): String? {
         } catch (e: IOException) {
             null
         } catch (e: DocumentException) {
-            log().trace("Not XML: {}", e.message)
+            log().trace("Not XML: {} - {}", e.message, document)
             null
         }
     }

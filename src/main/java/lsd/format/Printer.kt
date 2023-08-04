@@ -23,7 +23,7 @@ fun printFlat(obj: Any?): String =
                 else -> objectMapper.writeValueAsString(obj).flatten()
             }
         } catch (e: Exception) {
-            log().error("Problem serialising intercepted object for LSD: {}", e.message)
+            log().error("Problem serialising intercepted object for LSD (this will not affect message processing): {} - {}", e.message, obj)
             ""
         }
     } ?: ""

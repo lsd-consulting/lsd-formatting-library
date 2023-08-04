@@ -20,7 +20,7 @@ fun prettyPrint(obj: Any?): String =
                 else -> indent(objectMapper.writeValueAsString(obj))
             }
         } catch (e: Exception) {
-            log().error("Problem serialising intercepted object for LSD: {}", e.message)
+            log().error("Problem serialising intercepted object for LSD (this will not affect message processing): {} - {}", e.message, obj)
             ""
         }
     } ?: ""

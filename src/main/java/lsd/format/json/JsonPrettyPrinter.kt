@@ -10,7 +10,7 @@ fun indentJson(document: String?): String? {
         val map = objectMapper.readTree(document)
         return objectMapper.writeValueAsString(map)
     } catch (e: JsonProcessingException) {
-        log().trace("Not JSON: {}", e.message)
+        log().trace("Not JSON: {} - {}", e.message, document)
         null
     }
 }
