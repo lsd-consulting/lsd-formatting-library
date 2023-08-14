@@ -1,9 +1,9 @@
 package lsd.format
 
-import lsd.format.config.log
 import lsd.format.json.indentJson
 import lsd.format.json.objectMapper
 import lsd.format.xml.indentXml
+import lsd.logging.log
 
 fun prettyPrint(obj: Any?): String =
     obj?.let {

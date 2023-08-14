@@ -1,7 +1,7 @@
 package lsd.format.json
 
 import com.fasterxml.jackson.core.JsonProcessingException
-import lsd.format.config.log
+import lsd.logging.log
 
 fun indentJson(document: String?): String? {
     return if (document.isNullOrBlank()) {

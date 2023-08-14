@@ -19,10 +19,13 @@ kotlin {
 }
 
 repositories {
+    mavenLocal()
     mavenCentral()
 }
 
 dependencies {
+
+    implementation 'io.github.lsd-consulting:lsd-logging-library:1.0.1'
 
     // JSON & XML pretty formatting
     implementation 'com.google.code.gson:gson:2.9.0'

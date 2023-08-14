@@ -3,9 +3,9 @@ package lsd.format.json
 import com.fasterxml.jackson.core.JsonGenerator
 import com.fasterxml.jackson.databind.SerializerProvider
 import com.fasterxml.jackson.databind.ser.std.StdSerializer
-import lsd.format.config.log
 import lsd.format.xml.indentXml
 import lsd.format.xml.isValidXml
+import lsd.logging.log
 import java.io.IOException
 
 /**
