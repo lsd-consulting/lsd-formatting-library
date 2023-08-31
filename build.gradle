@@ -33,7 +33,7 @@ dependencies {
         exclude group: 'pull-parser', module: 'pull-parser'
         because "because pull-parser doesn't support the external-general-entities feature"
     }
-    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.13.0'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.14.3'
     implementation 'com.fasterxml.jackson.module:jackson-module-kotlin:2.13.0'
 
     implementation 'org.apache.commons:commons-lang3:3.12.0'
@@ -190,7 +190,7 @@ signing {
         // Use in-memory ascii-armored keys
         def signingKey = findProperty("signingKey")
         def signingPassword = findProperty("signingPassword")
-        useInMemoryPgpKeys(signingKey, signingPassword)
+        useInMemoryPgpKeys(signingKey as String, signingPassword as String)
         sign publishing.publications.mavenJava
     } else {
         // Use signing properties in ~/.gradle/gradle.properties
