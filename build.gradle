@@ -28,7 +28,7 @@ dependencies {
     implementation 'io.github.lsd-consulting:lsd-logging-library:1.0.13'
 
     // JSON & XML pretty formatting
-    implementation 'com.google.code.gson:gson:2.10.1'
+    implementation 'com.google.code.gson:gson:2.11.0'
     implementation('org.dom4j:dom4j:2.1.4') {
         exclude group: 'pull-parser', module: 'pull-parser'
         because "because pull-parser doesn't support the external-general-entities feature"
