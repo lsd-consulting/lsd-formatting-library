@@ -45,7 +45,7 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.11.2'
     testImplementation 'org.hamcrest:hamcrest-core:3.0'
     testImplementation 'com.approvaltests:approvaltests:24.8.0'
-    testImplementation 'io.mockk:mockk-jvm:1.13.12'
+    testImplementation 'io.mockk:mockk-jvm:1.13.13'
 }
 
 test {
