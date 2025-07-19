@@ -1,11 +1,11 @@
 plugins {
+    id 'org.jetbrains.kotlin.jvm' version '2.0.21'
     id 'java-library'
     id 'maven-publish'
     id 'signing'
     id 'io.github.gradle-nexus.publish-plugin' version '2.0.0'
-    id 'com.palantir.git-version' version '3.1.0'
+    id 'com.palantir.git-version' version '4.0.0'
     id 'jacoco'
-    id 'org.jetbrains.kotlin.jvm' version '2.0.21'
 }
 
 apply from: 'hooks.gradle'
@@ -15,7 +15,7 @@ version = gitVersion().replaceAll("^v", "")
 logger.lifecycle("Version=$version")
 
 kotlin {
-    jvmToolchain(11)
+    jvmToolchain(17)
 }
 
 repositories {
@@ -72,11 +72,10 @@ jacoco {
 }
 
 jacocoTestReport {
-    dependsOn test
     reports {
-        xml.enabled(true)
-        csv.enabled(false)
-        html.getOutputLocation().set(project.layout.buildDirectory.dir('reports/coverage'))
+        xml.required = true
+        html.required = true
+        html.outputLocation = layout.buildDirectory.dir("reports/coverage")
     }
 }
 
