@@ -1,5 +1,5 @@
 plugins {
-    id 'org.jetbrains.kotlin.jvm' version '2.0.21'
+    id 'org.jetbrains.kotlin.jvm' version '2.2.0'
     id 'java-library'
     id 'maven-publish'
     id 'signing'
@@ -28,24 +28,24 @@ dependencies {
     implementation 'io.github.lsd-consulting:lsd-logging-library:1.0.19'
 
     // JSON & XML pretty formatting
-    implementation 'com.google.code.gson:gson:2.11.0'
-    implementation('org.dom4j:dom4j:2.1.4') {
+    implementation 'com.google.code.gson:gson:2.13.1'
+    implementation('org.dom4j:dom4j:2.2.0') {
         exclude group: 'pull-parser', module: 'pull-parser'
         because "pull-parser doesn't support the external-general-entities feature"
     }
-    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.18.1'
-    implementation 'com.fasterxml.jackson.module:jackson-module-kotlin:2.18.1'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.19.2'
+    implementation 'com.fasterxml.jackson.module:jackson-module-kotlin:2.19.2'
 
-    implementation 'org.apache.commons:commons-lang3:3.17.0'
-    implementation 'org.slf4j:slf4j-api:2.0.16'
+    implementation 'org.apache.commons:commons-lang3:3.18.0'
+    implementation 'org.slf4j:slf4j-api:2.0.17'
 
-    testImplementation 'ch.qos.logback:logback-classic:1.5.12'
-    testImplementation 'ch.qos.logback:logback-core:1.5.12'
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.11.3'
-    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.11.3'
+    testImplementation 'ch.qos.logback:logback-classic:1.5.18'
+    testImplementation 'ch.qos.logback:logback-core:1.5.18'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.13.3'
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.13.3'
     testImplementation 'org.hamcrest:hamcrest-core:3.0'
-    testImplementation 'com.approvaltests:approvaltests:24.9.0'
-    testImplementation 'io.mockk:mockk-jvm:1.13.13'
+    testImplementation 'com.approvaltests:approvaltests:24.22.0'
+    testImplementation 'io.mockk:mockk-jvm:1.14.5'
 }
 
 test {
