@@ -36,8 +36,8 @@ dependencies {
     implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.20.0'
     implementation 'com.fasterxml.jackson.module:jackson-module-kotlin:2.20.0'
 
-    implementation 'org.apache.commons:commons-lang3:3.17.0'
-    implementation 'org.slf4j:slf4j-api:2.0.16'
+    implementation 'org.apache.commons:commons-lang3:3.19.0'
+    implementation 'org.slf4j:slf4j-api:2.0.17'
 
     testImplementation 'ch.qos.logback:logback-classic:1.5.12'
     testImplementation 'ch.qos.logback:logback-core:1.5.12'
