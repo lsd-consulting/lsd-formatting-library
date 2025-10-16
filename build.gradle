@@ -39,14 +39,14 @@ dependencies {
     implementation 'org.apache.commons:commons-lang3:3.19.0'
     implementation 'org.slf4j:slf4j-api:2.0.17'
 
-    testImplementation 'ch.qos.logback:logback-classic:1.5.12'
-    testImplementation 'ch.qos.logback:logback-core:1.5.12'
+    testImplementation 'ch.qos.logback:logback-classic:1.5.19'
+    testImplementation 'ch.qos.logback:logback-core:1.5.19'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:6.0.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:6.0.0'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.11.4'
     testImplementation 'org.hamcrest:hamcrest-core:3.0'
     testImplementation 'com.approvaltests:approvaltests:25.6.1'
-    testImplementation 'io.mockk:mockk-jvm:1.13.13'
+    testImplementation 'io.mockk:mockk-jvm:1.14.6'
 }
 
 test {
