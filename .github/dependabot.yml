@@ -2,14 +2,14 @@
 
 version: 2
 updates:
-  # Test dependencies - no semantic versioning impact (processed first)
+  # Production dependencies - triggers semantic releases)
   - package-ecosystem: "gradle"
     directory: "/"
     target-branch: "main"
     schedule:
       interval: "daily"
     commit-message:
-      prefix: "test"  # No version bump - test dependencies only
+      prefix: "fix"  # No version bump - test dependencies only
     open-pull-requests-limit: 10
     groups:
       testing-dependencies:
