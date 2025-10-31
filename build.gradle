@@ -33,7 +33,7 @@ dependencies {
         exclude group: 'pull-parser', module: 'pull-parser'
         because "pull-parser doesn't support the external-general-entities feature"
     }
-    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.20.0'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.20.1'
     implementation 'com.fasterxml.jackson.module:jackson-module-kotlin:2.20.0'
 
     implementation 'org.apache.commons:commons-lang3:3.19.0'
