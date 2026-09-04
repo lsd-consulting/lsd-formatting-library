@@ -37,7 +37,7 @@ dependencies {
     implementation 'com.fasterxml.jackson.module:jackson-module-kotlin:2.22.2'
 
     implementation 'org.apache.commons:commons-lang3:3.20.0'
-    implementation 'org.slf4j:slf4j-api:2.0.18'
+    implementation 'org.slf4j:slf4j-api:2.0.19'
 
     testImplementation 'ch.qos.logback:logback-classic:1.6.3'
     testImplementation 'ch.qos.logback:logback-core:1.6.3'
